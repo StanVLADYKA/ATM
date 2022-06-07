@@ -1,55 +1,44 @@
+import time
+lanlist=[["Insert our card","Reading bank card details","Enter your PIN(1111)","Invalid pin","Choose an operation"],
+        ["Вставьте карту","Идет считываение карты","Введите ПИН-код(1111)","Неверный пин","Выберите операцию"],
+        ["Устаўце картку","Ідзе счытванне карты","Увядзіце ПІН-код(1111)","Няверны пін","Абярыце аперацыю"],
+        ["插卡","刷卡进行中","输入您的代码(1111)","无效的引脚","选择一个操作"]]
 
-a1="Cash or bank card transactions"
-a2="Операции с наличными или с банковской картой"
-a3="Аперацыі з наяўнымі або з банкаўскай карткай"
-a4="使用现金或银行卡操作"
-a5="Error"
-b1="1 - Cash\n2-bank card\n"
-b2="1- Операции с наличными\n2 банковской картой\n"
-b3="1 - Аперацыі з наяўнымі\n2банкаўскай карткай\n"
-b4="1 -使用现金或\n银行卡操作\n"
 
 def Lang(l):
-    if l==1:
-        o=a1
-    elif l==2:
-        o=a2
-    elif l==3:
-        o=a3
-    elif l==4:
-        o=a4
+    if l<=4:
+        o=lanlist[l-1][0]
     else:
-        o=a5
+        o="Error, Ошибка, Памылка, 错误"
     return o
 
-def Oper(s):
-    if l==1:
-        o2=b1
-    elif l==2:
-        o2=b2
-    elif l==3:
-        o2=b3
-    elif l==4:
-        o2=b4
+def Ins(l):
+    i=lanlist[l-1][1]
+    return i
+def Pin(l):
+    p=lanlist[l-1][2]
+    return p
+def Check(l,pin):
+    if pin==1111:
+        m=lanlist[l-1][4]
     else:
-        o="Error"
-    return o2
-
+        m=lanlist[l-1][3]
+    return m
 
 def maneger():
-    l=int(input("1 -English\n2 -Русский\n3 -Беларуский\n4 -汉语\n"))
+    l=int(input("1 -English\n2 -Русский\n3 -Беларуский\n4 -汉语\n :"))
     print(Lang(l))
-    if l==1:
-        b=b1
-    elif l == 2:
-        b = b2
-    elif l == 3:
-        b = b3
-    elif l == 4:
-        b = b4
-    s = int(input(b))
-    print(Oper(s))
-
-
+    if "Error" in Lang(l):
+        l = int(input("1 -English\n2 -Русский\n3 -Беларуский\n4 -汉语\n"))
+        print(Lang(l))
+    time.sleep(3)
+    print(Ins(l))
+    time.sleep(3)
+    print(Pin(l))
+    pin=int(input())
+    time.sleep(2)
+    print(Check(l,pin))
+    time.sleep(2)
+    print("The END")
 
 maneger()
